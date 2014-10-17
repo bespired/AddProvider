@@ -56,9 +56,12 @@ class AddProvider extends Command {
 
 		if ( !in_array( $provider , $providers ))
 		{
-			$this->info( "                 " );
-			$this->info( "  Add $provider  " );
-			$this->info( "                 " );
+			if ( $this->option('verbose') )
+			{
+				$this->info( "                 " );
+				$this->info( "  Add $provider  " );
+				$this->info( "                 " );
+			}
 			
 			$code = File::get( app_path('config/app.php') );
 			// fetch provider block
@@ -78,13 +81,19 @@ class AddProvider extends Command {
 					if ( $written )
 					{
 						$providers[] = $provider;
+						if (!$this->option('verbose'))
+						{
+							$this->info( "Added $provider to app/config/app.php." );
+						}
 					}
 				}
 			}
 
 		}	
-
-		$this->listProviders( $providers, $provider );
+		if ( $this->option('verbose') )
+		{
+			$this->listProviders( $providers, $provider );
+		}
 		
 	}
 
@@ -163,7 +172,7 @@ class AddProvider extends Command {
 	protected function getArguments()
 	{
 		return array(
-			array('package', InputArgument::REQUIRED, 'An example argument.'),
+			array('package', InputArgument::REQUIRED, 'vendor/package'),
 		);
 	}
 
@@ -175,7 +184,7 @@ class AddProvider extends Command {
 	protected function getOptions()
 	{
 		return array(
-			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
+			array('silent', null, InputOption::VALUE_OPTIONAL, 'bverbose', null),
 		);
 	}
 
