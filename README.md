@@ -15,9 +15,7 @@ Artisan::add( new AddProvider() );
 
 ##### how to use
 
-```bash
+```php
 php artisan provider:add vendor/package
 
-![image1]
-
-[image1]: http://oi61.tinypic.com/8xk11x.jpg
+![alt text](http://oi61.tinypic.com/8xk11x.jpg "osx bash")
