@@ -46,9 +46,11 @@ class AddProvider extends Command {
 		if ( $provider == '' )
 		{
 			$error = "  Error: $package not found.   ";
+			$this->info( "" );
 			$this->error ( str_repeat(' ', strlen($error) ));
 			$this->error ( $error );
 			$this->error ( str_repeat(' ', strlen($error) ));
+			$this->info( "" );
 			exit();
 		}
 
@@ -73,12 +75,16 @@ class AddProvider extends Command {
 				if ( strpos( $result, $provider ) > -1 )
 				{
 					$written = File::put( app_path('config/app.php'), $result );
+					if ( $written )
+					{
+						$providers[] = $provider;
+					}
 				}
 			}
 
 		}	
 
-		$this->listProviders( $provider );
+		$this->listProviders( $providers, $provider );
 		
 	}
 
@@ -134,10 +140,9 @@ class AddProvider extends Command {
 		//return ucfirst($parts[0]) . '\\' . ucfirst($parts[0]) . '\\' . ucfirst($parts[1]) . 'ServiceProvider';
 	}
 
-	private function listProviders( $me )
+	private function listProviders( $providers, $me )
 	{
 		$this->info( "" );
-		$providers = Config::get( 'app.providers' );
 		foreach ($providers as $key => $provider) {
 			if ( substr( $provider, 0, 10 ) !== 'Illuminate' )
 			{
