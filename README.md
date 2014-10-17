@@ -24,7 +24,7 @@ php artisan provider:add vendor/package --verbose
 
 ##### in composer.json
 
-```json
+```
   "scripts": {
 		"post-install-cmd": [
 			"php artisan provider:add vendor/package",
