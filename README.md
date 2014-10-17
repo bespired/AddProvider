@@ -19,7 +19,7 @@ Artisan::add( new AddProvider() );
 php artisan provider:add vendor/package --verbose
 ```
 
-![alt text](http://oi61.tinypic.com/8xk11x.jpg "osx bash")
+![alt text](http://oi58.tinypic.com/2m6rg5z.jpg "osx bash")
 
 
 ##### in composer.json
