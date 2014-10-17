@@ -20,3 +20,15 @@ php artisan provider:add vendor/package --verbose
 ```
 
 ![alt text](http://oi61.tinypic.com/8xk11x.jpg "osx bash")
+
+
+##### in composer.json
+
+```php
+  "scripts": {
+		"post-install-cmd": [
+			"php artisan provider:add vendor/package",
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		]
+	},
