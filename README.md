@@ -4,13 +4,14 @@ AddProvider
 laravel 4 command for adding serviceprovider to app/config/app.php
 
 ##### where to install
-put in app/commands/
+put AddProvider.php in app/commands/AddProvider/
 
 ##### how to activate
-Add command in app/start/artisan:
+Add command in app/start/artisan.php:
 
 ```php
-Artisan::add( new AddProvider() );
+
+Artisan::add( new AddProvider\AddProvider() );
 ```
 
 ##### how to use
