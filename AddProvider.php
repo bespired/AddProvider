@@ -1,4 +1,6 @@
 <?php
+namespace AddProvider;
+
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -40,7 +42,7 @@ class AddProvider extends Command {
 		//
 		
 		$package = $this->argument('package');
-		$providers = Config::get( 'app.providers' );
+		$providers = \Config::get( 'app.providers' );
 		$provider  = $this->providerNameFromPackageName($package);
 
 		if ( $provider == '' )
